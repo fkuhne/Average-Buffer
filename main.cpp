@@ -9,16 +9,19 @@ int main()
 {
   unsigned count = 0;
   double newValue = 0;
-  while(count++ < 20)
+  while(count < 20)
   {
     if(count == 10) {b1.clear(); newValue=0;}
-    else if(count>10) {newValue = 5;}
-    else newValue+=0.3;
+    else if(count>10) newValue = 5;
 
-    b1.update(newValue);
+    double currentAverage = b1.update(newValue);
 
-    cout << "count = " << count << ", currentAverage = " << b1.getCurrentAverage() << " (" << flush;
+    cout << "(";
     b1.printBuffer();
-    cout << ")\n" << endl;
+    cout << ") --> Current average = " << currentAverage << endl;
+    cout << endl;
+
+    count++;
+    newValue+=0.3;
   }
 }
